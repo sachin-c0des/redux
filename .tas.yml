@@ -1,0 +1,16 @@
+framework: jest
+tier: large
+postMerge:
+  pattern: 
+    - "./test/utils/warning.spec.js"
+preMerge:
+  pattern:
+    - "./test/utils/warning.spec.js"
+preRun:
+     command:
+        - npm install
+        - npm run build
+postRun:
+     command:
+        - node --version
+version: 2.3
