@@ -7,11 +7,11 @@ preRun:
 preMerge:
   pattern:
     - "./test/**/*.spec.ts"
-    - "./test/*.spec.ts"
+#     - "./test/*.spec.ts"
 postMerge:
   pattern:
     - "./test/**/*.spec.ts"
-    - "./test/*.spec.ts"
+#     - "./test/*.spec.ts"
 postRun:
      command:
         - node --version
