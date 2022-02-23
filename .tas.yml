@@ -1,22 +1,18 @@
 ---
 framework: jest
-tier: large
-postMerge:
-  pattern:
-    - "./test/**/*.spec.ts"
-    - "./test/*.spec.ts"
-  strategy:
-    threshold: <5|100s|30m|6h>
-    type: <commit|time>
-preMerge:
-  pattern:
-    - "./test/**/*.spec.ts"
-    - "./test/*.spec.ts"
 preRun:
      command:
         - npm install
         - npm run build
+preMerge:
+  pattern:
+    - "./test/**/*.spec.ts"
+    - "./test/*.spec.ts"
+postMerge:
+  pattern:
+    - "./test/**/*.spec.ts"
+    - "./test/*.spec.ts"
 postRun:
      command:
         - node --version
-version: 2.3
+version: 1.0
