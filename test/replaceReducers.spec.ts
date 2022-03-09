@@ -16,9 +16,9 @@ describe('replaceReducers test', () => {
     expect(nextStore).toBe(store)
   })
   
-  it('should should detect multiple of 3', () => {
-    const number = Math.floor(Math.random() * 10)
-    const result = number % 3
-    expect(result).toBe(0)
-  });
+//   it('should should detect multiple of 3', () => {
+//     const number = Math.floor(Math.random() * 10)
+//     const result = number % 3
+//     expect(result).toBe(0)
+//   });
 })
