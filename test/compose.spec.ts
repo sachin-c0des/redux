@@ -10,6 +10,7 @@ describe('Utils', () => {
       expect(compose(double, square, double)(5)).toBe(200)
     })
 
+    
     it('composes functions from right to left', () => {
       const a = (next: (x: string) => string) => (x: string) => next(x + 'a')
       const b = (next: (x: string) => string) => (x: string) => next(x + 'b')
