@@ -18,7 +18,7 @@ import { DetailedExplanation } from '../../components/DetailedExplanation'
 :::info Prerequisites
 
 - Understanding the [Redux data flow and React-Redux APIs from Part 3](./part-3-data-flow.md)
-- Familiarity with [the React Router `<Link>` and `<Route>` components for page routing](https://reacttraining.com/react-router/web/api)
+- Familiarity with [the React Router `<Link>` and `<Route>` components for page routing](https://reactrouter.com/docs/en/v6/getting-started/overview)
 
 :::
 
@@ -251,9 +251,7 @@ import { postUpdated } from './postsSlice'
 export const EditPostForm = ({ match }) => {
   const { postId } = match.params
 
-  const post = useSelector(state =>
-    state.posts.find(post => post.id === postId)
-  )
+  const post = useSelector(state => state.posts.find(post => post.id == postId))
 
   const [title, setTitle] = useState(post.title)
   const [content, setContent] = useState(post.content)

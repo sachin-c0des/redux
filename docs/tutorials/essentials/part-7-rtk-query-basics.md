@@ -132,11 +132,19 @@ export const apiSlice = createApi({
   })
 })
 
-// Export the auto-generated hook for the `getPost` query endpoint
+// Export the auto-generated hook for the `getPosts` query endpoint
 export const { useGetPostsQuery } = apiSlice
 ```
 
 RTK Query's functionality is based on a single method, called `createApi`. All of the Redux Toolkit APIs we've seen so far are UI-agnostic, and could be used with _any_ UI layer. The RTK Query core logic is the same way. However, RTK Query also includes a React-specific version of `createApi`, and since we're using RTK and React together, we need to use that to take advantage of RTK's React integration. So, we import from `'@reduxjs/toolkit/query/react'` specifically.
+
+:::tip
+
+**Your application is expected to have only one `createApi` call in it**. This one API slice should contain _all_ endpoint definitions that talk to the same base URL. For example, endpoints `/api/posts` and `/api/users` are both fetching data from the same server, so they would go in the same API slice. If your app does fetch data from multiple servers, you can either specify full URLs in each endpoint, or if necessary create separate API slices for each server.
+
+Endpoints are normally defined directly inside the `createApi` call. If you're looking to split up your endpoints between multiple files, see [the "Injecting Endpoints" section in Part 8](./part-8-rtk-query-advanced.md#injecting-endpoints) section of the docs!
+
+:::
 
 #### API Slice Parameters
 
@@ -498,9 +506,9 @@ Like with query endpoints, the API slice automatically generates a React hook fo
 
 ### Using Mutation Hooks in Components
 
-Our `<AddNewPostForm>` is already dispatching an async thunk to add a post whenever we click the "Save Post" button. To do that, it has to import `useDispatch` and the `addNewPost` thunk. The mutation hooks replace both of those, and the usage pattern is very similar.
+Our `<AddPostForm>` is already dispatching an async thunk to add a post whenever we click the "Save Post" button. To do that, it has to import `useDispatch` and the `addNewPost` thunk. The mutation hooks replace both of those, and the usage pattern is very similar.
 
-```js title="features/posts/AddNewPostForm"
+```js title="features/posts/AddPostForm"
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 

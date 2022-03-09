@@ -36,7 +36,7 @@ Some of the changes in this section aren't strictly necessary - they're included
 
 ## Editing Posts
 
-We've already added a mutation endpoint to save new Post entries to the server, and used that in our `<AddNewPostForm>`. Next, we need to handle updating the `<EditPostForm>` to let us edit an existing post.
+We've already added a mutation endpoint to save new Post entries to the server, and used that in our `<AddPostForm>`. Next, we need to handle updating the `<EditPostForm>` to let us edit an existing post.
 
 ### Updating the Edit Post Form
 
@@ -527,12 +527,13 @@ export const UserPage = ({ match }) => {
 
   // highlight-start
   const selectPostsForUser = useMemo(() => {
+    const emptyArray = []
     // Return a unique selector instance for this page so that
     // the filtered results are correctly memoized
     return createSelector(
       res => res.data,
       (res, userId) => userId,
-      (data, userId) => data.filter(post => post.user === userId)
+      (data, userId) => data?.filter(post => post.user === userId) ?? emptyArray
     )
   }, [])
   // highlight-end
@@ -672,7 +673,7 @@ Uh-oh. The entire `<PostsList>` component was grayed out, because we just refetc
 
 ### Implementing Optimistic Updates
 
-For a small update like adding a reaction, we probably don't need to re-fetch the entire list of posts. Instead, we could try just updating the already-cached data on the client to match what we expect to have happen on the server. Also, if we update the cache immediately, the user gets instant feedback when the click the button instead of having to wait for the response to come back. **This approach of updating client state right away is called an "optimistic update"**, and it's a common pattern in web apps.
+For a small update like adding a reaction, we probably don't need to re-fetch the entire list of posts. Instead, we could try just updating the already-cached data on the client to match what we expect to have happen on the server. Also, if we update the cache immediately, the user gets instant feedback when they click the button instead of having to wait for the response to come back. **This approach of updating client state right away is called an "optimistic update"**, and it's a common pattern in web apps.
 
 **RTK Query lets you implement optimistic updates by modifying the client-side cache based on "request lifecycle" handlers**. Endpoints can define an `onQueryStarted` function that will be called when a request starts, and we can run additional logic in that handler.
 
