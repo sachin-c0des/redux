@@ -56,7 +56,6 @@ describe('Utils', () => {
 
     it('returns the first function if given only one', () => {
       const fn = () => {}
-
       expect(compose(fn)).toBe(fn)
     })
   })
