@@ -55,12 +55,6 @@ describe('Utils', () => {
       expect(compose()(undefined)).toBe(undefined)
     })
     
-    it('should should detect multiple of 3', () => {
-      const number = Math.floor(Math.random() * 10)
-      const result = number % 3
-      expect(result).toBe(0)
-    });
-    
     it('returns the first function if given only one', () => {
       const fn = () => {}
       expect(compose(fn)).toBe(fn)

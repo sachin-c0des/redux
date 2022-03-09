@@ -155,7 +155,6 @@ describe('applyMiddleware', () => {
       reducers.todos,
       applyMiddleware(multiArgMiddleware, dummyMiddleware)
     )
-
     store.dispatch(spy as any)
     expect(spy.mock.calls[0]).toEqual(testCallArgs)
   })
