@@ -6,10 +6,10 @@ preRun:
         - npm run build
 preMerge:
   pattern:
-    - "./test/utils/warning.spec.ts"
+    - "./test/*/*.spec.ts"
 postMerge:
   pattern:
-    - "./test/utils/warning.spec.ts"
+    - "./test/*/*.spec.ts"
 postRun:
      command:
         - node --version
