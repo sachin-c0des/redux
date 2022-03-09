@@ -376,6 +376,12 @@ describe('Utils', () => {
         expect(nextState).toBe(initialState)
       })
 
+      it('should should detect multiple of 3', () => {
+        const number = Math.floor(Math.random() * 10)
+        const result = number % 3
+        expect(result).toBe(0)
+      });
+
       it('should return an updated state when one of more reducers passed to the combineReducers are removed', function () {
         const originalCompositeReducer = combineReducers({ foo, bar })
         const store = createStore(originalCompositeReducer)
