@@ -15,5 +15,3 @@ postRun:
         - node --version
 configFile: jest.config.js
 version: 1.0
-
-
