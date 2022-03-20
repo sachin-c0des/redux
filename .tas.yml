@@ -14,5 +14,5 @@ postRun:
      command:
         - node --version
 configFile: jest.config.js
-parallelism: 4
+# parallelism: 4
 version: 1.0
